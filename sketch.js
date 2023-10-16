@@ -4,7 +4,9 @@ let timer = 1000;
 let eventChange = 0;
 let i = 0;
 let j = 0;
-let yPos = 0;
+
+let xPos_Text;
+let yPos_Text;
 
 let projectFont;
 let projectAudio;
@@ -23,12 +25,14 @@ function setup()
   background('Blue');
 
   textAlign(CENTER,CENTER);
-  textFont('sans-serif');
+  textFont(projectFont);
   textSize(18);
   fill(255);
-  text("[ Press 'Enter' to Begin ]", width/2, height/2);
+  text("[ Press 'ENTER' to Begin ]", width/2, height/2);
 
   countdownNumbers_Indiv = countdownNumbers_All.split(",");
+  xPos_Text = width-(width/1.1);
+  yPos_Text = height-(height/1.1);
 }
 
 function draw()
@@ -39,17 +43,32 @@ function draw()
     {
       textFont(projectFont);
       textSize(height);
-      background(0,0,int(random(100,256)));
+      
+      if(i<=countdownNumbers_Indiv.length)
+      {
+        background(0,0,int(random(100,256)));
+      }
+
       fill(255);
       text(countdownNumbers_Indiv[i], width/2-25, height/2-100);
       i++;
 
       if(i>countdownNumbers_Indiv.length)
       {
-        textSize(10);
-        text(projectText[j]+'\n', width/2, height/2+yPos);
+        if(j<=2)
+        {
+          background(0);
+          textSize(32);
+          text(projectText[j], width/2, height/2);
+        }
+        else
+        {
+          textSize(13);
+          text(projectText[j]+"\n", xPos_Text, yPos_Text);
+          yPos_Text+=25;
+        }
         j++;
-        yPos+=20
+        print(j);
       }
 
       eventChange = millis()+timer;
