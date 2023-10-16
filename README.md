@@ -1,60 +1,17 @@
-# p5.js Template
+# ReadMe - HW06 Working Document
 
-This is a README file that can be used to describe and document your assignment.
+The text that I've chosen for this assignment is my own summary of John Berger's 1972 video, ***Ways of Seeing*** from this week's *Read & Respond*.
 
-Markdown Cheatsheet (from [https://www.markdownguide.org/cheat-sheet/](https://www.markdownguide.org/cheat-sheet/)):
+I wanted to bring forth a new dimension to the simple text-based summary, and felt like implementing one of Berger's quotes practically; about how the addition of music and rhythm can bring about subtle modifications to the meaning / feelings of paintings & art.
 
----
----
+Additionally, I wanted the text appearing on screen to react dynamically to my own comments made in the summary. Hence, I coded in the functionality to change the sentence color to *yellow* whenever it detected my personal comment.
 
-# Heading1
-## Heading2
-### Heading3
-#### Heading4
-##### Heading5
-###### Heading6
+For this assignment, I already had the music and a rough idea in my mind. I jotted them down in the form of a digital sketch using Paint.
 
-**bold text**
+<img src = "./InitialSketch.jpg">
 
-*italicized text*
+I wanted the whole assignment to have a "tech-y" feel, hence I chose the colors and the fonts accordingly: system-based blue & green hues along with square-ish & mono-spaced typefaces.
 
-~~strikethrough text~~
+I primarily faced ***two*** challenges while implementing this. The first challenge was to get the countdown working properly with each passing second. I've used an *array* to store the countdown numbers, and was utilizing the *second()* function initially to traverse through the array elements. However, this wasn't working properly as *second()* returns the current seconds value of the system clock, due to which my countdown was starting from a different number everytime. I ultimately implemented my own timer using *millis()*, and incrementing that value by 1000 to get the correct sequence.
 
-Ordered List:
-1. First item
-2. Second item
-3. Third item
-
-Unordered List:
-- First item
-- Second item
-- Third item
-
-`short code block`
-
-```
-extended code block
-fun() {
-  return 0
-}
-```
-
-Link:  
-[linked text](https://www.example.com)
-
-
-Image with url:  
-![image description](https://dm-gy-6063-2023f-d.github.io/assets/homework/02/clark-espaco-modulado-00.jpg)
-
-
-Image on repo:  
-![image description](./file-name.jpg)
-
-
-To start a new line, add two spaces at the end of a line, like this:  
-this is a new line.
-
-
-To start a new paragraph, leave an empty line between two lines of text.
-
-This is a new paragraph.
+The second challenge was the music. I had edited the music using *FL Studio* to keep only the desired portions and the "drop", but wanted to have a fade-in effect at the start. I tried using the *setVolume()* function to pass the *amplitude* and *ramp* values but it wasn't working. Moreover, to get this function working, inclusion of the ***p5.sound*** library was required which I wasn't able to figure out. Hence, I edited the audio file directly by creating a fade-in automation using *FL Studio*.
