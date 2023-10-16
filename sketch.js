@@ -34,7 +34,8 @@ function setup()
 
   countdownNumbers_Indiv = countdownNumbers_All.split(",");
   xPos_Text = width-(width-50);
-  yPos_Text = height-(height-25);
+  yPos_Text = height-(height-50);
+  print(projectText[0][1]);
 }
 
 function draw()
@@ -48,7 +49,7 @@ function draw()
       
       if(i<=countdownNumbers_Indiv.length)
       {
-        background(0,0,int(random(50,256)));
+        background(0,0,int(random(100,200)));
       }
 
       fill(255);
@@ -71,7 +72,12 @@ function draw()
           if(j==(projectText.length-1)/2)
           {
             background(0);
-            yPos_Text = height-(height-25);
+            yPos_Text = height-(height-50);
+            fill(255,0,0);
+          }
+          if(projectText[j][0]=='I' && j!=(projectText.length-1)/2)
+          {
+            fill('Yellow');
           }
           textAlign(TOP,LEFT);
           textSize(15);
