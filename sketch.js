@@ -9,11 +9,13 @@ let xPos_Text;
 let yPos_Text;
 
 let projectFont;
+let projectFont_Count;
 let projectAudio;
 let projectText;
 
 function preload()
 {
+  projectFont_Count = loadFont("./Oxanium.ttf");
   projectFont = loadFont("./Courier_Bold.ttf");
   projectText = loadStrings("./HW06_Text.txt");
 }
@@ -22,7 +24,7 @@ function setup()
 {
   projectAudio = createAudio("./HW06_Audio.mp3");
   createCanvas(windowWidth, windowHeight);
-  background('Blue');
+  background('DarkBlue');
 
   textAlign(CENTER,CENTER);
   textFont(projectFont);
@@ -31,8 +33,8 @@ function setup()
   text("[ Press 'ENTER' to Begin ]", width/2, height/2);
 
   countdownNumbers_Indiv = countdownNumbers_All.split(",");
-  xPos_Text = width-(width/1.1);
-  yPos_Text = height-(height/1.1);
+  xPos_Text = width-(width-50);
+  yPos_Text = height-(height-25);
 }
 
 function draw()
@@ -41,36 +43,43 @@ function draw()
   {
     if(millis()>eventChange)
     {
-      textFont(projectFont);
+      textFont(projectFont_Count);
       textSize(height);
       
       if(i<=countdownNumbers_Indiv.length)
       {
-        background(0,0,int(random(100,256)));
+        background(0,0,int(random(50,256)));
       }
 
       fill(255);
-      text(countdownNumbers_Indiv[i], width/2-25, height/2-100);
+      text(countdownNumbers_Indiv[i], width/2.05, height/2.3);
       i++;
 
       if(i>countdownNumbers_Indiv.length)
       {
-        if(j<=2)
+        textFont(projectFont);
+        if(j<=2 || (j==projectText.length-1))
         {
+          textAlign(CENTER,CENTER);
           background(0);
           textSize(32);
           text(projectText[j], width/2, height/2);
         }
-        else
+        else if(j>2 && j<(projectText.length-1))
         {
-          textSize(13);
-          text(projectText[j]+"\n", xPos_Text, yPos_Text);
-          yPos_Text+=25;
+          fill(0,random(150,256),0);
+          if(j==(projectText.length-1)/2)
+          {
+            background(0);
+            yPos_Text = height-(height-25);
+          }
+          textAlign(TOP,LEFT);
+          textSize(15);
+          text(projectText[j]+"\n", xPos_Text, yPos_Text, width-150, 40);
+          yPos_Text+=40;
         }
         j++;
-        print(j);
       }
-
       eventChange = millis()+timer;
     }
   }
