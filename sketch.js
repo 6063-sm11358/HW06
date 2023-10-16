@@ -35,7 +35,6 @@ function setup()
   countdownNumbers_Indiv = countdownNumbers_All.split(",");
   xPos_Text = width-(width-50);
   yPos_Text = height-(height-50);
-  print(projectText[0][1]);
 }
 
 function draw()
